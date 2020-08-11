@@ -9,7 +9,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	/**
 	 * Get the major Laravel version number
 	 *
-	 * @return integer 
+	 * @return integer
 	 */
 	public function version() {
 		$app = $this->app;
@@ -32,8 +32,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 		// Bind the package-configred MtHaml instance
 		$this->app->singleton('laravel-haml.mthaml', function($app) {
 			$config = $this->getConfig();
-			return new MtHaml\Environment($config['mthaml']['environment'], 
-				$config['mthaml']['options'], 
+			return new MtHaml\Environment($config['mthaml']['environment'],
+				$config['mthaml']['options'],
 				$config['mthaml']['filters']);
 		});
 
@@ -51,7 +51,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 
 	/**
 	 * Register specific logic for Laravel 5. Merges package config with user config
-	 * 
+	 *
 	 * @return void
 	 */
 	public function registerLaravel5() {
@@ -70,6 +70,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 			case 4: $this->bootLaravel4(); break;
 			case 5: $this->bootLaravel5(); break;
 			case 6: $this->bootLaravel5(); break;
+			case 7: $this->bootLaravel5(); break;
 			default: throw new Exception('Unsupported Laravel version');
 		}
 
@@ -80,13 +81,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 		$customDirectives = $this->app['blade.compiler']->getCustomDirectives();
 		foreach ($customDirectives as $name => $closure) {
 			$this->app['Bkwld\LaravelHaml\HamlBladeCompiler']->directive($name, $closure);
-		}		
+		}
 	}
 
 	/**
-	 * Boot specific logic for Laravel 4. Tells Laravel about the package for auto 
+	 * Boot specific logic for Laravel 4. Tells Laravel about the package for auto
 	 * namespacing of config files
-	 * 
+	 *
 	 * @return void
 	 */
 	public function bootLaravel4() {
@@ -94,9 +95,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	}
 
 	/**
-	 * Boot specific logic for Laravel 5. Registers the config file for publishing 
+	 * Boot specific logic for Laravel 5. Registers the config file for publishing
 	 * to app directory
-	 * 
+	 *
 	 * @return void
 	 */
 	public function bootLaravel5() {
@@ -142,7 +143,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	/**
 	 * Get the configuration, which is keyed differently in L5 vs l4
 	 *
-	 * @return array 
+	 * @return array
 	 */
 	public function getConfig() {
         $configFiles = [
@@ -155,7 +156,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 		return $this->app->make('config')->get($key);
 	}
 
-	
+
 
 	/**
 	 * Get the services provided by the provider.
@@ -164,7 +165,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 	 */
 	public function provides() {
 		return array(
-			'Bkwld\LaravelHaml\HamlCompiler', 
+			'Bkwld\LaravelHaml\HamlCompiler',
 			'Bkwld\LaravelHaml\HamlBladeCompiler',
 			'laravel-haml.mthaml',
 		);
