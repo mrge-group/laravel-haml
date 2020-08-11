@@ -149,7 +149,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
         $configFiles = [
             4 => 'laravel-haml::config',
             5 => 'laravel-haml',
-            6 => 'haml'
+            6 => 'haml',
+            7 => 'haml'
         ];
 
 		$key = $configFiles[$this->version()];
