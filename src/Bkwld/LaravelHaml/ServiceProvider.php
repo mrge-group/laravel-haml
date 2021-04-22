@@ -32,7 +32,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         }
 
         // Determine the cache dir
-        $cache_dir = storage_path($this->version() == 5 ? '/framework/views' : '/views');
+        $cache_dir = storage_path($this->version() >= 5 ? '/framework/views' : '/views');
 
         // Bind the package-configred MtHaml instance
         $this->app->singleton('laravel-haml.mthaml', function ($app) {
