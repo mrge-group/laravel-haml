@@ -72,22 +72,18 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-
         // Version specific booting
         switch ($this->version()) {
             case 4:
                 $this->bootLaravel4();
                 break;
-            case 5:
+						case 5:
+						case 6:
+						case 7:
+						case 8:
                 $this->bootLaravel5();
                 break;
-            case 6:
-                $this->bootLaravel5();
-                break;
-            case 7:
-                $this->bootLaravel5();
-                break;
-            default:
+						default:
                 throw new Exception('Unsupported Laravel version');
         }
 
