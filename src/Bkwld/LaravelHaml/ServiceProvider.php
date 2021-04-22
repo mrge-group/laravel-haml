@@ -32,7 +32,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         }
 
         // Determine the cache dir
-        $cache_dir = storage_path($this->version() == 5 ? '/framework/views' : '/views');
+        $cache_dir = storage_path($this->version() >= 5 ? '/framework/views' : '/views');
 
         // Bind the package-configred MtHaml instance
         $this->app->singleton('laravel-haml.mthaml', function ($app) {
@@ -72,22 +72,18 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-
         // Version specific booting
         switch ($this->version()) {
             case 4:
                 $this->bootLaravel4();
                 break;
-            case 5:
+						case 5:
+						case 6:
+						case 7:
+						case 8:
                 $this->bootLaravel5();
                 break;
-            case 6:
-                $this->bootLaravel5();
-                break;
-            case 7:
-                $this->bootLaravel5();
-                break;
-            default:
+						default:
                 throw new Exception('Unsupported Laravel version');
         }
 
@@ -172,7 +168,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             4 => 'laravel-haml::config',
             5 => 'laravel-haml',
             6 => 'haml',
-            7 => 'haml'
+            7 => 'haml',
+						8 => 'haml'
         ];
 
         $key = $configFiles[$this->version()];
