@@ -10,7 +10,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=5.4",
         "illuminate/support": "4 - 8",
         "illuminate/view": "4 - 8",
         "mthaml/mthaml": "~1.3"
