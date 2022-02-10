@@ -81,6 +81,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             case 6:
             case 7:
             case 8:
+            case 9:
                 $this->bootLaravel5();
                 break;
             default:
@@ -169,7 +170,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             5 => 'laravel-haml',
             6 => 'haml',
             7 => 'haml',
-            8 => 'haml'
+            8 => 'haml',
+            9 => 'haml'
         ];
 
         $key = $configFiles[$this->version()];
