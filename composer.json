@@ -1,7 +1,6 @@
 {
     "name": "shopping24/laravel-haml",
     "description": "Wraps MtHaml for ease use in Laravel",
-    "version": "2.6.0",
     "authors": [
         {
             "name": "Robert Reinhard",
@@ -11,8 +10,8 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4",
-        "illuminate/support": "4 - 8",
-        "illuminate/view": "4 - 8",
+        "illuminate/support": "4 - 9",
+        "illuminate/view": "4 - 9",
         "mthaml/mthaml": "~1.3"
     },
     "autoload": {
